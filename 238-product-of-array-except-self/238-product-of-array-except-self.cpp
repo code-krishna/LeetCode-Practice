@@ -9,31 +9,31 @@ public:
         int tmp = 1;
         
         for(int i=0;i<nums.size();++i){
-            tmp *= nums[i];
-            left[i] = tmp;
-        }
-        
-        tmp = 1;
-        
-        for(int i=nums.size()-1;i>=0;--i){
-            tmp *= nums[i];
-            right[i] = tmp;
-        }
-        
-        for(int i=0;i<nums.size();++i){
            
            if(i==0){
-               res.push_back(right[i+1]);
-           }
-           else if(i==nums.size()-1){
-               res.push_back(left[i-1]);
+               res.push_back(1);
+               tmp *= nums[i];
            }
            else{
-               res.push_back(left[i-1] * right[i+1]);
+               res.push_back(tmp);
+               tmp *= nums[i];
            }
        }
+       
+       tmp = 1;
+        
+       for(int i=nums.size()-1;i>=0;--i){
+           
+           if(i==nums.size()-1){
+               tmp *= nums[i];
+           }
+           else{
+               res[i] *= tmp;
+               tmp *= nums[i];
+           }
+       } 
     
-        return res;
+       return res;
     
     }
 };
