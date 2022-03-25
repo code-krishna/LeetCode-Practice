@@ -3,9 +3,6 @@ public:
     vector<int> productExceptSelf(vector<int>& nums) {
         
         vector<int> res;
-        
-        int left[nums.size()], right[nums.size()];
-        
         int tmp = 1;
         
         for(int i=0;i<nums.size();++i){
