@@ -2,26 +2,24 @@ class Solution {
 public:
     int maxProfit(vector<int>& prices) {
         
-        int array[prices.size()];
+        int l=0, r=l+1, result=0;
         
-        int max = prices[prices.size()-1];
-        
-        for(int i=prices.size()-1;i>=0;--i){
+        while(l<r && r<prices.size()){
             
-            if(prices[i] > max) max = prices[i];
+            if(prices[l] > prices[r]){
+                l=r;
+                r=l+1;
+            }
             
-            array[i] = max;
+            else{
+                
+                if(prices[r] - prices[l] >  result){
+                    result = prices[r] - prices[l];
+                }
+                r++;
+            }
             
         }
-        
-        int result = 0;
-        
-        for(int i=0;i<prices.size();++i){
-            
-            if(array[i] - prices[i] > result) result = array[i] - prices[i];
-            
-        }
-        
         return result;
     }
 };
