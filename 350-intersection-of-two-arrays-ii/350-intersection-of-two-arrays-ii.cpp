@@ -2,26 +2,26 @@ class Solution {
 public:
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
         
-        unordered_map<int,int> m;
-        
-        for(int i=0;i<nums1.size();++i){
-            
-            m[nums1[i]]++;
-            
-        }
+        sort(nums1.begin(), nums1.end());
+        sort(nums2.begin(), nums2.end());
         
         vector<int> result;
         
-        for(int i=0;i<nums2.size();++i){
+        int i=0, j=0;
+        
+        while(i<nums1.size() && j<nums2.size()){
             
-            if(m.find(nums2[i])!=m.end()){
+            if(nums1[i] == nums2[j]){
+                result.push_back(nums1[i]);
+                i++; j++;
+            }
+            else if(nums1[i] > nums2[j]){
                 
-                if(m[nums2[i]]!=0){
-                    
-                    result.push_back(nums2[i]);
-                    m[nums2[i]]--;
-                }
+                j++;
+            }
+            else if(nums1[i] < nums2[j]){
                 
+                i++;
             }
             
         }
