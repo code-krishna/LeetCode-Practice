@@ -8,7 +8,6 @@ public:
         
         for(int i=3;i<=n;++i){
             res = prev1 + prev2;
-            
             prev2 = prev1;
             prev1 = res;
         }
