@@ -10,14 +10,10 @@ public:
             
             vector<int> curr;
             if(res.size()>0){
-                
+                curr.push_back(1);
                 vector<int> top = res.back();
-                for(int j=0;j<top.size();++j){
-                    if(j==0) curr.push_back(top[j]);
-                    
-                    else{
-                        curr.push_back(top[j] + top[j-1]);
-                    }
+                for(int j=1;j<top.size();++j){
+                    curr.push_back(top[j] + top[j-1]);
                 }
             }
             curr.push_back(1);
