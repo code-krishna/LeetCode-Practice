@@ -25,6 +25,6 @@ class Solution {
         if(s1.charAt(a) == s2.charAt(b) && s1.charAt(b) == s2.charAt(a))
             return true;
         
-        else return false;
+        return false;
     }
 }
