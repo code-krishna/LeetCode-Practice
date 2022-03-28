@@ -1,32 +1,30 @@
 class Solution {
     
-    boolean isAnagram(String s1, String s2) {  
-        boolean status = true;  
-        if (s1.length() != s2.length()) {  
-            status = false;  
-        } else {  
-            char[] ArrayS1 = s1.toLowerCase().toCharArray();  
-            char[] ArrayS2 = s2.toLowerCase().toCharArray();  
-            Arrays.sort(ArrayS1);  
-            Arrays.sort(ArrayS2);  
-            status = Arrays.equals(ArrayS1, ArrayS2);  
-        }  
-        return status;
-    }  
-    
     public boolean areAlmostEqual(String s1, String s2) {
         
-        if(!isAnagram(s1,s2)) return false;
+        if(s1.length()!=s2.length()) return false;
         
-        int r=0; 
+        int a=-1, b=-1; 
         
         for(int i=0;i<s1.length();++i){
             
-            if(s1.charAt(i)!=s2.charAt(i)) r++;
-            
-            if(r>2) return false;
+           if(s1.charAt(i)!=s2.charAt(i)){
+               if(a!=-1 && b!=-1)
+                   return false;
+               if(a==-1) a=i;
+               else if(b==-1) b=i;
+           }
         }
         
-        return true;
+        if((a!=-1 && b==-1) || (a==-1 && b!=-1))
+            return false;
+        
+        if(a==-1 && b==-1)
+            return true;
+        
+        if(s1.charAt(a) == s2.charAt(b) && s1.charAt(b) == s2.charAt(a))
+            return true;
+        
+        else return false;
     }
 }
