@@ -12,7 +12,7 @@ class Solution {
         for(int i=0;i<points.length;++i){
             if(points[i][0]==x || points[i][1]==y){
                 validIdx.add(i);
-                System.out.println(i);
+                //System.out.println(i);
             }
         }
     
