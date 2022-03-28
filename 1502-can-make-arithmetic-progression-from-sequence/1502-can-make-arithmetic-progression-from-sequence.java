@@ -1,7 +1,7 @@
 class Solution {
     public boolean canMakeArithmeticProgression(int[] arr) {
         
-        if(arr.length==0) return true;
+        if(arr.length>=0 && arr.length<=2) return true;
         
         Arrays.sort(arr);
         
