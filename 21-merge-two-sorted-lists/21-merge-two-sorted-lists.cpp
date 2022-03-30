@@ -17,7 +17,7 @@ public:
         
         while(ptr2!=NULL && ptr1->next!=NULL){
             
-            if(ptr1->next->val > ptr2->val){
+            if(ptr1->next->val >= ptr2->val){
                 ListNode* tmp1 = ptr1->next;
                 ListNode* tmp2 = ptr2->next;
                 ptr1->next = ptr2;
