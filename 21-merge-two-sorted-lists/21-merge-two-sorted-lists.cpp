@@ -13,11 +13,11 @@ public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         
         ListNode *dummy = new ListNode(0, list1);
-        ListNode *ptr1 = dummy, *ptr2 = list2, *head = list1, *prev1 = list1;
+        ListNode *ptr1 = dummy, *ptr2 = list2;
         
         while(ptr2!=NULL && ptr1->next!=NULL){
             
-            if(ptr1->next->val >= ptr2->val){
+            if(ptr1->next->val > ptr2->val){
                 ListNode* tmp1 = ptr1->next;
                 ListNode* tmp2 = ptr2->next;
                 ptr1->next = ptr2;
