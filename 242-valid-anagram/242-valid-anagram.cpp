@@ -2,6 +2,8 @@ class Solution {
 public:
     bool isAnagram(string s, string t) {
         
+        if(s.size()!=t.size()) return false;
+        
         short s1[26] = {0,};
         short t1[26] = {0,};
         
