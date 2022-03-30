@@ -18,11 +18,10 @@ public:
         while(ptr2!=NULL && ptr1->next!=NULL){
             
             if(ptr1->next->val >= ptr2->val){
-                ListNode* tmp1 = ptr1->next;
-                ListNode* tmp2 = ptr2->next;
+                ListNode* tmp = ptr2->next;
+                ptr2->next = ptr1->next;
                 ptr1->next = ptr2;
-                ptr2->next = tmp1;
-                ptr2 = tmp2;
+                ptr2 = tmp;
             }
             else{
                 ptr1 = ptr1->next;
