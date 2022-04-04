@@ -7,8 +7,7 @@ public:
         for(int i=0;i<grid.size();++i){
             for(int j=0;j<grid[0].size();++j){
                 if(grid[i][j]==1){
-                    int max_till_now = 0;
-                    dfs(grid, i, j, max_till_now);
+                    int max_till_now = dfs(grid, i, j);
                     if(max_till_now > max_size)
                         max_size = max_till_now;
                 }
@@ -19,32 +18,16 @@ public:
         
     }
     
-    void dfs(vector<vector<int>>& grid, int r, int c, int& max_till_now){
+    int dfs(vector<vector<int>>& grid, int r, int c){
         
-        if(grid[r][c]==0) return;
+        
+        if(r>grid.size()-1 || r<0 || c<0 || c>grid[0].size()-1) return 0;
+        
+        if(grid[r][c]==0) return 0;
         
         grid[r][c] =  0;
-        max_till_now++;
         
-        if(r<grid.size()-1){
-            if(grid[r+1][c]==1)
-                dfs(grid, r+1, c, max_till_now);
-        }
-        
-        if(r>0){
-            if(grid[r-1][c]==1)
-                dfs(grid, r-1, c, max_till_now);
-        }
-        
-        if(c>0){
-            if(grid[r][c-1]==1)
-                dfs(grid, r, c-1, max_till_now);
-        }
-        
-        if(c<grid[0].size()-1){
-            if(grid[r][c+1]==1)
-                dfs(grid, r, c+1, max_till_now);
-        }
+        return (1 + dfs(grid, r+1, c) + dfs(grid, r, c+1) + dfs(grid, r-1, c) + dfs(grid, r, c-1));
         
     }
 };
