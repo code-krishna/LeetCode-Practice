@@ -17,21 +17,11 @@ public:
         if(root1==NULL && root2!=NULL) return root2;
         if(root1!=NULL && root2==NULL) return root1;
         
-        int val1 = root1!=NULL ? root1->val : 0;
-        int val2 = root2!=NULL ? root2->val : 0;
+        root1->val = root1->val + root2->val;
         
-        root1->val = val1 + val2;
+        root1->left = mergeTrees(root1->left, root2->left);
         
-        TreeNode *ptr1 = root1!=NULL ? root1->left : NULL;
-        TreeNode *ptr2 = root2!=NULL ? root2->left : NULL;
-        
-        root1->left = mergeTrees(ptr1, ptr2);
-        
-        ptr1 = root1!=NULL ? root1->right : NULL;
-        ptr2 = root2!=NULL ? root2->right : NULL;
-        
-        root1->right = mergeTrees(ptr1, ptr2);
-        
+        root1->right = mergeTrees(root1->right, root2->right);
         
         return root1;
         
