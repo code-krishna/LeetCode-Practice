@@ -25,16 +25,11 @@ public:
         
         if(root==NULL) return;
         
-        //cout<<res.size()<<" "<<level<<endl;
-        
         if(res.size() > level){
-            //cout<<root->val<<endl;
             res[level].push_back(root->val);
         }
-        else{
-            vector<int> tmp;
-            tmp.push_back(root->val);
-            res.push_back(tmp);
+        else{           
+            res.push_back({root->val});
         }
         
         levelOrderUtil(root->left, res, level+1);
