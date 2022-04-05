@@ -17,9 +17,7 @@ public:
         
         int l = maxDepth(root->left);
         int r = maxDepth(root->right);
-        
-        if(l > r) return l+1;
-        else return r+1;
+        return 1+max(l,r);
         
     }
 };
