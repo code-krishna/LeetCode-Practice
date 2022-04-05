@@ -20,31 +20,16 @@ class Solution {
 public:
     Node* connect(Node* root) {
         
-        if(root==NULL) return NULL;
-        
-        if(root->left==NULL && root->right==NULL) return root;
+        if(root==NULL || (root->left==NULL && root->right==NULL)) return root;
         
         if(root->left!=NULL && root->right!=NULL){
             root->left->next = root->right;
         }
         
         if(root->next!=NULL){
-            if(root->right!=NULL){
-                if(root->next->left!=NULL){
-                    root->right->next=root->next->left;
-                }
-                else if(root->next->right!=NULL){
-                    root->right->next=root->next->right;
-                }
-            }
-            else if(root->left!=NULL){
-                if(root->next->left!=NULL){
-                    root->left->next=root->next->left;
-                }
-                else if(root->next->right!=NULL){
-                    root->left->next=root->next->right;
-                }
-            }
+            Node *ptr1 = root->next->left!=NULL ? root->next->left : root->next->right;
+            Node *ptr2 = root->right!=NULL ? root->right : root->left;
+            ptr2->next = ptr1;
         }
         
         connect(root->left);
