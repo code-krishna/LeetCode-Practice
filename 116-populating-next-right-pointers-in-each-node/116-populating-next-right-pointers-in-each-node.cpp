@@ -27,13 +27,11 @@ public:
         }
         
         if(root->next!=NULL){
-            Node *ptr1 = root->next->left!=NULL ? root->next->left : root->next->right;
-            Node *ptr2 = root->right!=NULL ? root->right : root->left;
-            ptr2->next = ptr1;
+            Node *ptr = root->right!=NULL ? root->right : root->left;
+            ptr->next = root->next->left!=NULL ? root->next->left : root->next->right;
         }
         
         connect(root->left);
-        
         connect(root->right);
         
         return root;
