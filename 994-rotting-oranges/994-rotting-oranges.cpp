@@ -3,6 +3,7 @@ public:
     int orangesRotting(vector<vector<int>>& grid) {
         
         queue<pair<int,int>> q;
+        int fresh=0, min=0;
         
         for(int i=0;i<grid.size();++i){
             for(int j=0;j<grid[0].size();++j){
@@ -10,10 +11,12 @@ public:
                     pair<int, int> p(i,j);
                     q.push(p);
                 }
+                else if(grid[i][j]==1){
+                    fresh++;
+                }
             }
         }
-        int min=0;
-        while(!q.empty()){
+        while(!q.empty() && fresh>0){
             int sz = q.size();
             min++;
             for(int k=0;k<sz;++k){
@@ -26,6 +29,7 @@ public:
                         grid[i-1][j]=2;
                         p = make_pair(i-1,j);
                         q.push(p);
+                        fresh--;
                     }
                 }
                 if(i<grid.size()-1){
@@ -33,6 +37,7 @@ public:
                         grid[i+1][j]=2;
                         p = make_pair(i+1,j);
                         q.push(p);
+                        fresh--;
                     }
                 }
                 if(j>0){
@@ -40,6 +45,7 @@ public:
                         grid[i][j-1]=2;
                         p = make_pair(i,j-1);
                         q.push(p);
+                        fresh--;
                     }
                 }
                 if(j<grid[0].size()-1){
@@ -47,19 +53,13 @@ public:
                         grid[i][j+1]=2;
                         p = make_pair(i,j+1);
                         q.push(p);
+                        fresh--;
                     }
                 }
             }
         }
         
-        for(int i=0;i<grid.size();++i){
-            for(int j=0;j<grid[0].size();++j){
-                if(grid[i][j]==1){
-                    return -1;
-                }
-            }
-        }
-        if(min==0) return 0;
-        else return min-1;
+        if(fresh==0) return min;
+        else return -1;
     }
 };
