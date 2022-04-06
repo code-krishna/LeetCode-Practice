@@ -3,25 +3,22 @@ public:
     vector<vector<int>> res;
     vector<int> perm;
     vector<vector<int>> permute(vector<int>& nums) {
-        vector<int> visited;
-        for(int i=0;i<nums.size();++i){
-            visited.push_back(0);
-        }
-        backtrack(nums, visited);
+        backtrack(nums);
         return res;
     }
     
-    void backtrack(vector<int> numbers, vector<int> visited){
+    void backtrack(vector<int> numbers){
         if(perm.size()==numbers.size()){
             res.push_back(perm);
         }
         for(int i=0;i<numbers.size();++i){
-            if(!visited[i]){
-                visited[i]=1;
-                perm.push_back(numbers[i]);
-                backtrack(numbers, visited);
+            if(numbers[i]!=100){
+                int tmp = numbers[i];
+                numbers[i]=100;
+                perm.push_back(tmp);
+                backtrack(numbers);
                 perm.pop_back();
-                visited[i] = 0;
+                numbers[i] = tmp;
             }
         }
     }
