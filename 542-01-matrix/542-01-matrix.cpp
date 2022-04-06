@@ -12,7 +12,6 @@ public:
                 else{
                     pair<int, int> p(i,j);
                     q.push(p);
-                    //cout<<i<<" "<<j<<endl;
                 }
             }
         }
