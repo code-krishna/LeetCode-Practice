@@ -1,19 +1,19 @@
 class Solution {
 public:
+    vector<int> comb;
+    vector<vector<int>> res;
     vector<vector<int>> combine(int n, int k) {
-        
-        vector<vector<int>> res;
-        backtrack(n, 1, k, {}, res);
+        backtrack(n,k);
         return res;
     }
-    void backtrack(int n, int start, int k, vector<int> comb, vector<vector<int>> &res){
+    void backtrack(int n, int k, int start=1){
         if(comb.size()==k){
             res.push_back(comb);
             return;
         }
         for(int i=start;i<=n;++i){
             comb.push_back(i);
-            backtrack(n, i+1, k, comb, res);
+            backtrack(n, k, i+1);
             comb.pop_back();
         }
     }
