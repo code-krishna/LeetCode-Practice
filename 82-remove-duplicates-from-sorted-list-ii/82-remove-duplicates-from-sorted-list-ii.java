@@ -12,24 +12,18 @@ class Solution {
     public ListNode deleteDuplicates(ListNode head) {
         
         ListNode curr = head;
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
+        ListNode dummy = new ListNode(0,head);
         ListNode prev = dummy;
         
-        while(curr!=null){
-            if(curr.next!=null){
-                if(curr.val==curr.next.val){
-                    while(curr.next!=null){
-                        if(curr.val==curr.next.val)
-                            curr = curr.next;
-                        else
-                            break;
-                    }
-                    prev.next = curr.next;
+        while(curr!=null && curr.next!=null){
+            if(curr.val==curr.next.val){
+                while(curr.next!=null && curr.val==curr.next.val){
+                    curr = curr.next;
                 }
-                else{
-                    prev = prev.next;
-                }
+                prev.next = curr.next;
+            }
+            else{
+                prev = prev.next;
             }
             curr = curr.next;
         }
