@@ -24,11 +24,6 @@ public:
             }
             for(int j=i+1;j<nums.size();++j)
             {
-                if(j>i+1)
-                {
-                    if(nums[j] == nums[j-1])
-                        continue;
-                }
                 int init_sum = nums[i]+nums[j];
                 int target = 0 - init_sum;
                 if(m.find(target)!=m.end())
@@ -40,6 +35,13 @@ public:
                         result.push_back(init_result);
                     }
                 }
+                while(j<nums.size()-1 && nums[j] == nums[j+1]){
+                    j++;
+                }
+            }
+            
+            while(i<nums.size()-1 && nums[i] == nums[i+1]){
+                i++;
             }
         }
         
