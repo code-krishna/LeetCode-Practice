@@ -3,8 +3,9 @@ public:
     bool isPalindrome(string s) {
         
         string s1="";
+        int n = s.size();
         
-        for(int i=0;i<s.size();++i){
+        for(int i=0;i<n;++i){
             if(s[i] >= 'A' && s[i] <= 'Z'){
                 s1+=(s[i] - 'A' + 'a');
             }
@@ -13,8 +14,10 @@ public:
             }
         }
         
-        for(int i=0;i<s1.size()/2;++i){
-            if(s1[i]!=s1[s1.size()-1-i])
+        n = s1.size();
+        
+        for(int i=0;i<n/2;++i){
+            if(s1[i]!=s1[n-1-i])
                 return false;
         }
         
