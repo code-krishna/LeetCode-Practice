@@ -6,39 +6,25 @@ public:
         
         unordered_map<int, int> m;
         
-        int max_cnt=0;
-        
-        for(int i=0;i<nums.size();++i){
-            
-            m[nums[i]]++;
-            
-            if(m[nums[i]] > max_cnt){
-                
-                max_cnt = m[nums[i]];
-            }
+        for(auto i : nums){
+            m[i]++;
         }
         
-        vector<vector<int>> v(max_cnt+1);
+        vector<vector<int>> v(nums.size()+1);
         
         for(auto i=m.begin();i!=m.end();++i){
-            
             v[i->second].push_back(i->first);
         }
         
-        while(k && max_cnt){
+        int p=nums.size();
+        
+        while(k){
             
-            if(!v[max_cnt].empty()){
-                
-                for(int i=0;i<v[max_cnt].size();++i){
-                    
-                    res.push_back(v[max_cnt][i]);
-                    k--;
-                    
-                }
-                
+            for(int i=0;i<v[p].size();++i){
+                res.push_back(v[p][i]);
+                k--;
             }
-            max_cnt--;
-            
+            p--;
         }
         
        return res; 
