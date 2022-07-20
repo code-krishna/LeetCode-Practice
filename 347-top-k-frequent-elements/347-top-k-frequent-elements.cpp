@@ -8,6 +8,8 @@ public:
         
         vector<vector<int>> v;
         
+        int max_cnt=0;
+        
         for(int i=0;i<nums.size();++i){
 
             m[nums[i]] = 0;
@@ -16,9 +18,14 @@ public:
         for(int i=0;i<nums.size();++i){
             
             m[nums[i]]++;
+            
+            if(m[nums[i]] > max_cnt){
+                
+                max_cnt = m[nums[i]];
+            }
         }
         
-        for(int i=1;i<100005;++i){
+        for(int i=0;i<=max_cnt;++i){
             
             vector<int> tmp = {};
             v.push_back(tmp);
@@ -29,21 +36,19 @@ public:
             v[i->second].push_back(i->first);
         }
         
-        int p = 100004;
-        
-        while(k && p>0){
+        while(k && max_cnt){
             
-            if(!v[p].empty()){
+            if(!v[max_cnt].empty()){
                 
-                for(int i=0;i<v[p].size();++i){
+                for(int i=0;i<v[max_cnt].size();++i){
                     
-                    res.push_back(v[p][i]);
+                    res.push_back(v[max_cnt][i]);
                     k--;
                     
                 }
                 
             }
-            p--;
+            max_cnt--;
             
         }
         
