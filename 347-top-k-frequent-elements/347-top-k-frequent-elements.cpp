@@ -6,14 +6,7 @@ public:
         
         unordered_map<int, int> m;
         
-        vector<vector<int>> v;
-        
         int max_cnt=0;
-        
-        for(int i=0;i<nums.size();++i){
-
-            m[nums[i]] = 0;
-        }
         
         for(int i=0;i<nums.size();++i){
             
@@ -25,11 +18,7 @@ public:
             }
         }
         
-        for(int i=0;i<=max_cnt;++i){
-            
-            vector<int> tmp = {};
-            v.push_back(tmp);
-        }
+        vector<vector<int>> v(max_cnt+1);
         
         for(auto i=m.begin();i!=m.end();++i){
             
