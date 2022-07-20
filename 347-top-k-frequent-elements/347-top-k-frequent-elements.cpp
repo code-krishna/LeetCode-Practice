@@ -4,41 +4,40 @@ public:
         
         vector<int> res;
         
-        unordered_map<int, int> m1;
+        unordered_map<int, int> m;
         
-        unordered_map<int, vector<int>> m2;
+        vector<vector<int>> v;
         
         for(int i=0;i<nums.size();++i){
 
-            m1[nums[i]] = 0;
+            m[nums[i]] = 0;
         }
         
         for(int i=0;i<nums.size();++i){
             
-            m1[nums[i]]++;
+            m[nums[i]]++;
         }
         
         for(int i=1;i<100005;++i){
             
-            vector<int> v = {};
-            
-            m2[i] = v;
+            vector<int> tmp = {};
+            v.push_back(tmp);
         }
         
-        for(auto i=m1.begin();i!=m1.end();++i){
+        for(auto i=m.begin();i!=m.end();++i){
             
-            m2[i->second].push_back(i->first);
+            v[i->second].push_back(i->first);
         }
         
         int p = 100004;
         
         while(k && p>0){
             
-            if(!m2[p].empty()){
+            if(!v[p].empty()){
                 
-                for(int i=0;i<m2[p].size();++i){
+                for(int i=0;i<v[p].size();++i){
                     
-                    res.push_back(m2[p][i]);
+                    res.push_back(v[p][i]);
                     k--;
                     
                 }
