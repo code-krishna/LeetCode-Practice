@@ -6,23 +6,24 @@ public:
         
         unordered_map<int, int> m;
         
+        int p=nums.size();
+        
         for(auto i : nums){
             m[i]++;
         }
         
-        vector<vector<int>> v(nums.size()+1);
+        vector<vector<int>> v(p+1);
         
         for(auto i=m.begin();i!=m.end();++i){
             v[i->second].push_back(i->first);
         }
         
-        int p=nums.size();
-        
         while(k){
             
-            for(int i=0;i<v[p].size();++i){
-                res.push_back(v[p][i]);
-                k--;
+            if(!v[p].empty()){
+                
+                res.insert(res.end(), v[p].begin(), v[p].end());
+                k -= v[p].size();
             }
             p--;
         }
