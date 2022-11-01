@@ -29,8 +29,6 @@ public:
         int lh = findHeight(root->left);
         int rh = findHeight(root->right);
         
-        cout<<lh<<" "<<rh<<endl;
-        
         if(abs(lh-rh) > 1) return false;
         
         return isBalanced(root->left) && isBalanced(root->right);
